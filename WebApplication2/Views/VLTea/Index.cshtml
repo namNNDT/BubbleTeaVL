@@ -1,0 +1,45 @@
+﻿@model IEnumerable<WebApplication2.Models.BubleTea>
+
+@{
+    ViewBag.Title = "Trang Thông Tin";
+}
+
+<h2>Danh sách </h2>
+
+<p>
+    @Html.ActionLink("Thêm mới ", "Create")
+</p>
+<table class="table table-bordered">
+    <tr>
+        <th>
+            Tên
+        </th>
+        <th>
+            Gía
+        </th>
+        <th>
+            Món kèm
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+             @item.Name
+        </td>
+        <td>
+            @item.Price.ToString("N0")
+        </td>
+        <td>
+            @item.Topping
+        </td>
+        <td>
+            @Html.ActionLink("Sửa", "Edit", new { id=item.id }) |
+            @Html.ActionLink("Xem", "Details", new { id=item.id }) |
+            @Html.ActionLink("Xóa", "Delete", new { id=item.id })
+        </td>
+    </tr>
+}
+
+</table>
